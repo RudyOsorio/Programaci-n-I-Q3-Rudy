@@ -15,6 +15,9 @@ public class RestaurateMiCasita{
     // control de reservacion de mesas
     private static boolean[] mesasReservadas = new boolean[8];
     
+    // Arreglo para almacenar el nombre del mesero asignado a cada mesa
+    private static String[] meserosAsignados = new String[8];
+    
     /* @param args the command line arguments*/
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
@@ -45,13 +48,16 @@ public class RestaurateMiCasita{
                         reservarMesa(scan);
                     break;
                     case 3:
-                        System.out.println("\n[Módulo de Asignación de Mesero Exclusivo]");
+                        asignarMesero(scan);
                     break;
                     case 4:
-                        imprimirFactura();
+                        imprimirFactura(scan);
                     break;
                     case 5:
                         System.out.println(".  Gracias por preferirnos!               .");
+                        System.out.println(".  Esperamos que vuelva pronto!           .");
+                        System.out.println("...........................................");
+                        System.out.println("");
                     break;
                     default:
                         System.out.println(".  Opcion no valida. Intente de nuevo.    .");
@@ -214,21 +220,21 @@ public class RestaurateMiCasita{
     }// fin mostrar especialidades
     
     /* proceso de agragar productos del menu */
-    private static void agregarProducto(String nombre, double precio) {
+    private static void agregarProducto(String nombre, double precio){
         productosSeleccionados.add(nombre);
         preciosSeleccionados.add(precio);
         System.out.println(".  -> " + nombre + " agregado a la orden.");
     }
     
     /* reservacion de mesas */
-    private static void reservarMesa(Scanner scanner) {
+    private static void reservarMesa(Scanner scanner){
         System.out.println("...........................................");
         System.out.println(".  Reservacion de mesa                    .");
         System.out.println(".  -------------------------------        .");
         System.out.println(".  Estado actual de las mesas:            .");
         
         // Formato para desplegar cada mesa con su área correspondiente
-        for (int i = 0; i < mesasReservadas.length; i++) {
+        for(int i = 0; i < mesasReservadas.length; i++){
             int numeroMesa = i + 1;
             String area = obtenerAreaMesa(numeroMesa);
             String estado = mesasReservadas[i] ? "Reservada" : "Disponible";
@@ -258,11 +264,11 @@ public class RestaurateMiCasita{
             scanner.next();
         }
         System.out.println("===========================================\n");
-    }
+    }// fin de reservacion de mesas
     
     /* mapa de posicion de las mesas */
-    private static String obtenerAreaMesa(int numeroMesa) {
-        switch (numeroMesa) {
+    private static String obtenerAreaMesa(int numeroMesa){
+        switch(numeroMesa){
             case 1: case 2:
                 return "Comedor";
             case 3: case 4:
@@ -274,40 +280,146 @@ public class RestaurateMiCasita{
             default:
                 return "Desconocida";
         }
+    }// fin de mapa de mesas
+    
+    /* asignacion de mesero */
+    private static void asignarMesero(Scanner scanner){
+        System.out.println("...........................................");
+        System.out.println(".  Asignacion de mesero exclusivo         .");
+        System.out.println(".  -------------------------------        .");
+        
+        // Verificar si existe al menos una mesa reservada
+        boolean hayReservas = false;
+        for(boolean estado : mesasReservadas){
+            if (estado) {
+                hayReservas = true;
+                break;
+            }
+        }
+
+        if(!hayReservas){
+            System.out.println(".  No hay mesas reservadas actualmente.    .");
+            System.out.println(".  Primero debe reservar una mesa.         .");
+            System.out.println("===========================================\n");
+            return;
+        }
+        
+        System.out.println(".  Mesas reservadas actualmente:           .");
+        for(int i = 0; i < mesasReservadas.length; i++){
+            if(mesasReservadas[i]){
+                int numeroMesa = i + 1;
+                String area = obtenerAreaMesa(numeroMesa);
+                String mesero = (meserosAsignados[i] != null) ? meserosAsignados[i] : "Sin asignar";
+                System.out.printf(".  Mesa %d (%-8s) -> Mesero: %-15s .\n", numeroMesa, area, mesero);
+            }
+        }
+        
+        System.out.println("...........................................");
+        System.out.println(".  0. Volver al menu principal            .");
+        System.out.println("...........................................");
+        System.out.print(".  Ingrese el numero de mesa reservada:   .");
+
+        if(scanner.hasNextInt()){
+            int mesaElegida = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer de entrada
+
+            if(mesaElegida == 0){
+                System.out.println(".  Regresando al menu principal...         .");
+            }else if(mesaElegida >= 1 && mesaElegida <= 8){
+                int indice = mesaElegida - 1;
+                if(!mesasReservadas[indice]){
+                    System.out.println(".  La Mesa " + mesaElegida + " no esta reservada. Solo se pueden asignar meseros a mesas reservadas. .");
+                }else{
+                    System.out.print(".  Ingrese el nombre del mesero asignado: ");
+                    String nombreMesero = scanner.nextLine().trim();
+
+                    if(!nombreMesero.isEmpty()){
+                        meserosAsignados[indice] = nombreMesero;
+                        System.out.println(".  Mesero '" + nombreMesero + "' asignado exitosamente a la Mesa " + mesaElegida + ". .");
+                    }else{
+                        System.out.println(".  El nombre del mesero no puede estar vacio. .");
+                    }
+                }
+            }else{
+                System.out.println(".  Numero de mesa fuera de rango (0-8).   .");
+            }
+        }else{
+            System.out.println(".  Entrada invalida. Ingrese un numero.   .");
+            scanner.next();
+        }
+        System.out.println("===========================================\n");
     }
     
     /* proceso de facturacion */
-    private static void imprimirFactura() {
-        System.out.println("\n===============================================");
-        System.out.println("====          Factura de consumo           ====");
-        System.out.println("===============================================");
+    private static void imprimirFactura(Scanner scanner) {
+        System.out.println("\n===========================================");
+        System.out.println("====        FACTURA DE CONSUMO         ====");
+        System.out.println("===========================================");
         
-        if (productosSeleccionados.isEmpty()) {
+        if(productosSeleccionados.isEmpty()) {
             System.out.println(".  No hay productos consumidos aun.       .");
             System.out.println("===========================================\n");
             return;
         }
 
-        double subtotal = 0.0;
-        for (int i = 0; i < productosSeleccionados.size(); i++) {
-            String nombre = productosSeleccionados.get(i);
-            double precio = preciosSeleccionados.get(i);
-            System.out.printf(". %-35s L%7.2f .\n", nombre, precio);
-            subtotal += precio;
+        System.out.println(".  0. Volver al menu principal            .");
+        System.out.println("...........................................");
+        System.out.print("Ingrese el numero de mesa para generar la factura (1-8) o 0 para regresar: ");
+
+        if (scanner.hasNextInt()) {
+            int mesaElegida = scanner.nextInt();
+            
+            /* si no se selecciona una mesa, regresamos al menu principal */
+            if (mesaElegida == 0) {
+                System.out.println(".  Regresando al menu principal...         .");
+                System.out.println("===========================================\n");
+                return;
+            }
+            
+            /* mesas a elegir entre la 1 y la 8 */
+            if (mesaElegida >= 1 && mesaElegida <= 8) {
+                int indice = mesaElegida - 1;
+                String areaMesa = obtenerAreaMesa(mesaElegida);
+                String nombreMesero = (meserosAsignados[indice] != null) ? meserosAsignados[indice] : "Sin asignar";
+                String estadoMesa = mesasReservadas[indice] ? "Reservada" : "Sin reservar";
+
+                System.out.println("\n===========================================");
+                System.out.println("====       RESTAURANTE MI CASITA       ====");
+                System.out.println("===========================================");
+                System.out.printf(". Mesa N: %-2d (%-8s)                     .\n", mesaElegida, areaMesa);
+                System.out.printf(". Estado: %-12s                        .\n", estadoMesa);
+                System.out.printf(". Atendido por: %-25s .\n", nombreMesero);
+                System.out.println("...........................................");
+                System.out.println(". CONSUMO REALIZADO:                      .");
+                
+                /* sub total */
+                double subtotal = 0.0;
+                for (int i = 0; i < productosSeleccionados.size(); i++) {
+                    String nombre = productosSeleccionados.get(i);
+                    double precio = preciosSeleccionados.get(i);
+                    System.out.printf(". %-35s L%7.2f .\n", nombre, precio);
+                    subtotal += precio;
+                }
+
+                /* Cálculos de ISV y Propina */
+                double isv = subtotal * 0.15;
+                double propinaSugerida = subtotal * 0.10;
+                double totalGeneral = subtotal + isv + propinaSugerida;
+                
+                /* subtotal impreso, ISV, propina y total */
+                System.out.println("...........................................");
+                System.out.printf(". SUBTOTAL:                          L%7.2f .\n", subtotal);
+                System.out.printf(". ISV (15%%):                         L%7.2f .\n", isv);
+                System.out.printf(". PROPINA SUGERIDA (10%%):            L%7.2f .\n", propinaSugerida);
+                System.out.println("...........................................");
+                System.out.printf(". TOTAL A PAGAR:                     L%7.2f .\n", totalGeneral);
+            }else{
+                System.out.println(".  Numero de mesa fuera de rango (0-8).   .");
+            }
+        }else{
+            System.out.println(".  Entrada invalida. Ingrese un numero.   .");
+            scanner.next();
         }
-
-        // Cálculos de ISV y Propina
-        double isv = subtotal * 0.15;
-        double propinaSugerida = subtotal * 0.10;
-        double totalGeneral = subtotal + isv + propinaSugerida;
-
-        System.out.println("...............................................");
-        System.out.printf(". SUBTOTAL:                           L%7.2f .\n", subtotal);
-        System.out.printf(". ISV (15%%):                          L%7.2f .\n", isv);
-        System.out.printf(". PROPINA SUGERIDA (10%%):             L%7.2f .\n", propinaSugerida);
-        System.out.println("...............................................");
-        System.out.printf(". TOTAL A PAGAR:                     L%7.2f .\n", totalGeneral);
-        System.out.println("===============================================\n");
+        System.out.println("===========================================\n");
     }
-    
 }//fin restaurante
