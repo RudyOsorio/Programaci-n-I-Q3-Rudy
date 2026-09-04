@@ -25,6 +25,7 @@ public class RestaurateMiCasita{
         final String NOMBRE_SISTEMA = "RESTAURANTE MI CASITA";
         int opcionPrincipal = 0;
         
+        /* menu principal */
         while(opcionPrincipal != 5){
             System.out.println("===========================================");
             System.out.println("====       " + NOMBRE_SISTEMA + "       ====");
@@ -38,6 +39,8 @@ public class RestaurateMiCasita{
             System.out.println(".  4. Imprimir Factura                    .");
             System.out.println(".  5. Salir                               .");
             System.out.println("...........................................");
+            
+            /* mostrando las demas opciones de cada item del menu principal */
             if(scan.hasNextInt()){
                 opcionPrincipal = scan.nextInt();
                 switch(opcionPrincipal){
@@ -72,7 +75,10 @@ public class RestaurateMiCasita{
     
     /* mostra el sub menu de comidas */
     private static void mostrarSubmenuMenu(Scanner scanner){
+        /* variable categorias */
         int opcionCategoria = 0;
+        
+        /* categorias del menu comidas */
         while(opcionCategoria != 4){
             System.out.println("...........................................");
             System.out.println(".  Menu | Seleccione una opcion           .");
@@ -83,6 +89,7 @@ public class RestaurateMiCasita{
             System.out.println(".  4. Volver al menu principal            .");
             System.out.println("...........................................");
             
+            /**/
             if(scanner.hasNextInt()){
                 opcionCategoria = scanner.nextInt();
                 switch(opcionCategoria){
@@ -108,6 +115,7 @@ public class RestaurateMiCasita{
         }
     }//fin sub menu
     
+    /**/
     private static void mostrarEntradas(Scanner scanner){
         System.out.println(".......................................................");
         System.out.println(".  Menu de Entradas | Seleccione una opcion           .");
@@ -118,6 +126,8 @@ public class RestaurateMiCasita{
         System.out.println(".  4. Tabla de Embutidos y Quesos:            L210.00 .");
         System.out.println(".  5. Ensalada Cesar Individual:              L150.00 .");
         System.out.println(".......................................................");
+        
+        /**/
         if(scanner.hasNextInt()){
             int entradaSeleccionada = scanner.nextInt();
             switch(entradaSeleccionada) {
@@ -145,6 +155,7 @@ public class RestaurateMiCasita{
         }
     }// fin mostrar entradas
     
+    /**/
     private static void mostrarPlatillosFuertes(Scanner scanner){
         System.out.println(".......................................................");
         System.out.println(".  Menu Platillos Fuertes | Seleccione una opcion     .");
@@ -155,6 +166,8 @@ public class RestaurateMiCasita{
         System.out.println(".  4. Risoto:                                 L180.00 .");
         System.out.println(".  5. Tacos gourmet:                          L140.00 .");
         System.out.println(".......................................................");
+        
+        /**/
         if(scanner.hasNextInt()){
             int entradaSeleccionada = scanner.nextInt();
             switch(entradaSeleccionada) {
@@ -182,6 +195,7 @@ public class RestaurateMiCasita{
         }
     }// fin mostrar platillos fuertes
     
+    /**/
     private static void mostrarEspecialidades(Scanner scanner){
         System.out.println(".......................................................");
         System.out.println(".  Menu Especialidades | Seleccione una opcion        .");
@@ -192,6 +206,8 @@ public class RestaurateMiCasita{
         System.out.println(".  4. Costilla de cerdo en salsa BBQ:         L180.00 .");
         System.out.println(".  5. Frijoles, chismol y carne en anafre:    L180.00 .");
         System.out.println(".......................................................");
+        
+        /**/
         if(scanner.hasNextInt()){
             int entradaSeleccionada = scanner.nextInt();
             switch(entradaSeleccionada) {
@@ -244,6 +260,7 @@ public class RestaurateMiCasita{
         System.out.println(".  0. Volver al menu principal            .");
         System.out.print(".  Seleccione un numero de mesa:          .");
         
+        /**/
         if(scanner.hasNextInt()){
             int mesaElegida = scanner.nextInt();
             if(mesaElegida == 0){
@@ -288,7 +305,7 @@ public class RestaurateMiCasita{
         System.out.println(".  Asignacion de mesero exclusivo         .");
         System.out.println(".  -------------------------------        .");
         
-        // Verificar si existe al menos una mesa reservada
+        /* Verificar si existe al menos una mesa reservada */
         boolean hayReservas = false;
         for(boolean estado : mesasReservadas){
             if (estado) {
@@ -296,7 +313,8 @@ public class RestaurateMiCasita{
                 break;
             }
         }
-
+        
+        /**/
         if(!hayReservas){
             System.out.println(".  No hay mesas reservadas actualmente.    .");
             System.out.println(".  Primero debe reservar una mesa.         .");
@@ -304,6 +322,7 @@ public class RestaurateMiCasita{
             return;
         }
         
+        /**/
         System.out.println(".  Mesas reservadas actualmente:           .");
         for(int i = 0; i < mesasReservadas.length; i++){
             if(mesasReservadas[i]){
@@ -314,11 +333,13 @@ public class RestaurateMiCasita{
             }
         }
         
+        /**/
         System.out.println("...........................................");
         System.out.println(".  0. Volver al menu principal            .");
         System.out.println("...........................................");
         System.out.print(".  Ingrese el numero de mesa reservada:   .");
-
+        
+        /**/
         if(scanner.hasNextInt()){
             int mesaElegida = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer de entrada
@@ -351,21 +372,25 @@ public class RestaurateMiCasita{
     }
     
     /* proceso de facturacion */
-    private static void imprimirFactura(Scanner scanner) {
-        System.out.println("\n===========================================");
+    private static void imprimirFactura(Scanner scanner){
+        System.out.println("");
+        System.out.println("===========================================");
         System.out.println("====        FACTURA DE CONSUMO         ====");
         System.out.println("===========================================");
         
+        /**/
         if(productosSeleccionados.isEmpty()) {
             System.out.println(".  No hay productos consumidos aun.       .");
             System.out.println("===========================================\n");
             return;
         }
-
+        
+        /**/
         System.out.println(".  0. Volver al menu principal            .");
         System.out.println("...........................................");
         System.out.print("Ingrese el numero de mesa para generar la factura (1-8) o 0 para regresar: ");
-
+        
+        /**/
         if (scanner.hasNextInt()) {
             int mesaElegida = scanner.nextInt();
             
@@ -382,8 +407,10 @@ public class RestaurateMiCasita{
                 String areaMesa = obtenerAreaMesa(mesaElegida);
                 String nombreMesero = (meserosAsignados[indice] != null) ? meserosAsignados[indice] : "Sin asignar";
                 String estadoMesa = mesasReservadas[indice] ? "Reservada" : "Sin reservar";
-
-                System.out.println("\n===========================================");
+                
+                /**/
+                System.out.println("");
+                System.out.println("===========================================");
                 System.out.println("====       RESTAURANTE MI CASITA       ====");
                 System.out.println("===========================================");
                 System.out.printf(". Mesa N: %-2d (%-8s)                     .\n", mesaElegida, areaMesa);
