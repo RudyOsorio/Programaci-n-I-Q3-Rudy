@@ -80,14 +80,14 @@ public class RestaurateMiCasita{
         
         /* categorias del menu comidas */
         while(opcionCategoria != 4){
-            System.out.println("...........................................");
-            System.out.println(".  Menu | Seleccione una opcion           .");
-            System.out.println(".  -------------------------------        .");
-            System.out.println(".  1. Entradas:                           .");
-            System.out.println(".  2. Platillos fuertes:                  .");
-            System.out.println(".  3. Especialidad de la casa:            .");
-            System.out.println(".  4. Volver al menu principal            .");
-            System.out.println("...........................................");
+            System.out.println(".....................................................");
+            System.out.println(".     1. Ver Menu | Seleccione una opcion           .");
+            System.out.println(".        ---------------------------------          .");
+            System.out.println(".        1. Entradas:                               .");
+            System.out.println(".        2. Platillos fuertes:                      .");
+            System.out.println(".        3. Especialidad de la casa:                .");
+            System.out.println(".        4. Volver al menu principal                .");
+            System.out.println(".....................................................");
             
             /**/
             if(scanner.hasNextInt()){
@@ -103,7 +103,9 @@ public class RestaurateMiCasita{
                         mostrarEspecialidades(scanner);
                         break;
                     case 4:
-                        System.out.println(".  Regresando...                          .");
+                        System.out.println();
+                        System.out.println(".  <<< Regresando...");
+                        System.out.println();
                         break;
                     default:
                         System.out.println(".  Opción no valida.                      .");
@@ -117,15 +119,16 @@ public class RestaurateMiCasita{
     
     /**/
     private static void mostrarEntradas(Scanner scanner){
-        System.out.println(".......................................................");
-        System.out.println(".  Menu de Entradas | Seleccione una opcion           .");
-        System.out.println(".  ----------------------------------------           .");
-        System.out.println(".  1. Sopa de Tomate Rustica:                 L 70.00 .");
-        System.out.println(".  2. Bruschetta Clasica de Queso y Tomate:   L 90.00 .");
-        System.out.println(".  3. Calamares Crujientes con Salsa Tartara: L190.00 .");
-        System.out.println(".  4. Tabla de Embutidos y Quesos:            L210.00 .");
-        System.out.println(".  5. Ensalada Cesar Individual:              L150.00 .");
-        System.out.println(".......................................................");
+        System.out.println("..................................................................");
+        System.out.println(".          1. Entradas | Seleccione una opcion                   .");
+        System.out.println(".             ---------------------------------                  .");
+        System.out.println(".             1. Sopa de Tomate Rustica:                 L 70.00 .");
+        System.out.println(".             2. Bruschetta Clasica de Queso y Tomate:   L 90.00 .");
+        System.out.println(".             3. Calamares Crujientes con Salsa Tartara: L190.00 .");
+        System.out.println(".             4. Tabla de Embutidos y Quesos:            L210.00 .");
+        System.out.println(".             5. Ensalada Cesar Individual:              L150.00 .");
+        System.out.println(".             6. Volver al menu                                  .");
+        System.out.println("..................................................................");
         
         /**/
         if(scanner.hasNextInt()){
@@ -133,19 +136,24 @@ public class RestaurateMiCasita{
             switch(entradaSeleccionada) {
                 case 1:
                     agregarProducto("Sopa de Tomate Rustica", 70.00);
-                    break;
+                break;
                 case 2:
                     agregarProducto("Bruschetta Clasica de Queso y Tomate", 90.00);
-                    break;
+                break;
                 case 3:
                     agregarProducto("Calamares Crujientes con Salsa Tartara", 190.00);
-                    break;
+                break;
                 case 4:
                     agregarProducto("Tabla de Embutidos y Quesos", 210.00);
-                    break;
+                break;
                 case 5:
                     agregarProducto("Ensalada Cesar Individual", 150.00);
-                    break;
+                break;
+                case 6:
+                    System.out.println();
+                    System.out.println(".  <<< Regresando...");
+                    System.out.println();
+                break;
                 default:
                     System.out.println(".  Opcion de entrada fuera de rango.      .");
             }
@@ -157,15 +165,16 @@ public class RestaurateMiCasita{
     
     /**/
     private static void mostrarPlatillosFuertes(Scanner scanner){
-        System.out.println(".......................................................");
-        System.out.println(".  Menu Platillos Fuertes | Seleccione una opcion     .");
-        System.out.println(".  ----------------------------------------           .");
-        System.out.println(".  1. Filete Mignon:                          L240.00 .");
-        System.out.println(".  2. Salmon a la Plancha:                    L350.00 .");
-        System.out.println(".  3. Lasagna:                                L220.00 .");
-        System.out.println(".  4. Risoto:                                 L180.00 .");
-        System.out.println(".  5. Tacos gourmet:                          L140.00 .");
-        System.out.println(".......................................................");
+        System.out.println(".................................................................");
+        System.out.println(".          2 Platillos Fuertes | Seleccione una opcion          .");
+        System.out.println(".            ------------------------------------------         .");
+        System.out.println(".            1. Filete Mignon:                          L240.00 .");
+        System.out.println(".            2. Salmon a la Plancha:                    L350.00 .");
+        System.out.println(".            3. Lasagna:                                L220.00 .");
+        System.out.println(".            4. Risoto:                                 L180.00 .");
+        System.out.println(".            5. Tacos gourmet:                          L140.00 .");
+        System.out.println(".            6. Volver al menu                                  .");
+        System.out.println(".................................................................");
         
         /**/
         if(scanner.hasNextInt()){
@@ -173,19 +182,24 @@ public class RestaurateMiCasita{
             switch(entradaSeleccionada) {
                 case 1:
                     agregarProducto("Filete Mignon", 240.00);
-                    break;
+                break;
                 case 2:
                     agregarProducto("Salmon a la Plancha", 350.00);
-                    break;
+                break;
                 case 3:
                     agregarProducto("Lasagna", 220.00);
-                    break;
+                break;
                 case 4:
                     agregarProducto("Risoto", 180.00);
-                    break;
+                break;
                 case 5:
                     agregarProducto("Tacos gourmet", 140.00);
-                    break;
+                break;
+                case 6:
+                    System.out.println();
+                    System.out.println(".  <<< Regresando...");
+                    System.out.println();
+                break;
                 default:
                     System.out.println(".  Opcion de entrada fuera de rango.      .");
             }
@@ -197,15 +211,16 @@ public class RestaurateMiCasita{
     
     /**/
     private static void mostrarEspecialidades(Scanner scanner){
-        System.out.println(".......................................................");
-        System.out.println(".  Menu Especialidades | Seleccione una opcion        .");
-        System.out.println(".  ----------------------------------------           .");
-        System.out.println(".  1. Parrillada al carbon:                   L900.00 .");
-        System.out.println(".  2. Sopa de caracol:                        L170.00 .");
-        System.out.println(".  3. Plato tipico combinado:                 L220.00 .");
-        System.out.println(".  4. Costilla de cerdo en salsa BBQ:         L180.00 .");
-        System.out.println(".  5. Frijoles, chismol y carne en anafre:    L180.00 .");
-        System.out.println(".......................................................");
+        System.out.println(".................................................................");
+        System.out.println(".          3 Especialidad de la casa | Seleccione una opcion    .");
+        System.out.println(".            ------------------------------------------------   .");
+        System.out.println(".            1. Parrillada al carbon:                   L900.00 .");
+        System.out.println(".            2. Sopa de caracol:                        L170.00 .");
+        System.out.println(".            3. Plato tipico combinado:                 L220.00 .");
+        System.out.println(".            4. Costilla de cerdo en salsa BBQ:         L180.00 .");
+        System.out.println(".            5. Frijoles, chismol y carne en anafre:    L180.00 .");
+        System.out.println(".            6. Volver al menu                                  .");
+        System.out.println(".................................................................");
         
         /**/
         if(scanner.hasNextInt()){
@@ -213,19 +228,24 @@ public class RestaurateMiCasita{
             switch(entradaSeleccionada) {
                 case 1:
                     agregarProducto("Parrillada al carbon", 900.00);
-                    break;
+                break;
                 case 2:
                     agregarProducto("Sopa de caracol", 170.00);
-                    break;
+                break;
                 case 3:
                     agregarProducto("Plato tipico combinado", 220.00);
-                    break;
+                break;
                 case 4:
                     agregarProducto("Costilla de cerdo en salsa BBQ", 180.00);
-                    break;
+                break;
                 case 5:
                     agregarProducto("Frijoles, chismol y carne en anafre", 180.00);
-                    break;
+                break;
+                case 6:
+                    System.out.println();
+                    System.out.println(".  <<< Regresando...");
+                    System.out.println();
+                break;
                 default:
                     System.out.println(".  Opcion de entrada fuera de rango.      .");
             }
@@ -240,25 +260,27 @@ public class RestaurateMiCasita{
         productosSeleccionados.add(nombre);
         preciosSeleccionados.add(precio);
         System.out.println(".  -> " + nombre + " agregado a la orden.");
+        System.out.println();
     }
     
     /* reservacion de mesas */
     private static void reservarMesa(Scanner scanner){
-        System.out.println("...........................................");
-        System.out.println(".  Reservacion de mesa                    .");
-        System.out.println(".  -------------------------------        .");
-        System.out.println(".  Estado actual de las mesas:            .");
+        System.out.println(".................................................");
+        System.out.println(".     2  Reservacion de mesa                    .");
+        System.out.println(".        --------------------                   .");
+        System.out.println(".        Estado actual de las mesas:            .");
         
         // Formato para desplegar cada mesa con su área correspondiente
         for(int i = 0; i < mesasReservadas.length; i++){
             int numeroMesa = i + 1;
             String area = obtenerAreaMesa(numeroMesa);
             String estado = mesasReservadas[i] ? "Reservada" : "Disponible";
-            System.out.printf(".  Mesa %d (%-10s): %-11s .\n", numeroMesa, area, estado);
+            System.out.printf(".        Mesa %d (%-10s): %-11s       .\n", numeroMesa, area, estado);
         }
-        System.out.println("...........................................");
-        System.out.println(".  0. Volver al menu principal            .");
-        System.out.print(".  Seleccione un numero de mesa:          .");
+        System.out.println(".................................................");
+        System.out.println(".        0. Volver al menu principal            .");
+        System.out.println(".        Seleccione un numero de mesa:          .");
+        System.out.println(".................................................");
         
         /**/
         if(scanner.hasNextInt()){
@@ -271,7 +293,7 @@ public class RestaurateMiCasita{
                     System.out.println(".  Mesa " + mesaElegida + " Reservada. Seleccione otra.   .");
                 }else{
                     mesasReservadas[indice] = true;
-                    System.out.println(".  Mesa " + mesaElegida + " (" + obtenerAreaMesa(mesaElegida) + ") reservada exitosamente. .");
+                    System.out.println(">>  Mesa " + mesaElegida + " (" + obtenerAreaMesa(mesaElegida) + ") reservada exitosamente ");
                 }
             }else{
                 System.out.println(".  Numero de mesa fuera de rango (1-8).   .");
@@ -280,7 +302,8 @@ public class RestaurateMiCasita{
             System.out.println(".  Entrada invalida. Ingrese un numero.   .");
             scanner.next();
         }
-        System.out.println("===========================================\n");
+        System.out.println(".................................................");
+        System.out.println();
     }// fin de reservacion de mesas
     
     /* mapa de posicion de las mesas */
@@ -301,9 +324,9 @@ public class RestaurateMiCasita{
     
     /* asignacion de mesero */
     private static void asignarMesero(Scanner scanner){
-        System.out.println("...........................................");
-        System.out.println(".  Asignacion de mesero exclusivo         .");
-        System.out.println(".  -------------------------------        .");
+        System.out.println(".................................................");
+        System.out.println(".     3. Asignacion de mesero exclusivo         .");
+        System.out.println(".        -------------------------------        .");
         
         /* Verificar si existe al menos una mesa reservada */
         boolean hayReservas = false;
@@ -316,28 +339,30 @@ public class RestaurateMiCasita{
         
         /**/
         if(!hayReservas){
-            System.out.println(".  No hay mesas reservadas actualmente.    .");
-            System.out.println(".  Primero debe reservar una mesa.         .");
-            System.out.println("===========================================\n");
+            System.out.println(".        No hay mesas reservadas actualmente.   .");
+            System.out.println(".        Primero debe reservar una mesa.        .");
+            System.out.println(".................................................");
+            System.out.println();
+            
             return;
         }
         
         /**/
-        System.out.println(".  Mesas reservadas actualmente:           .");
+        System.out.println(".        Mesas reservadas actualmente:           .");
         for(int i = 0; i < mesasReservadas.length; i++){
             if(mesasReservadas[i]){
                 int numeroMesa = i + 1;
                 String area = obtenerAreaMesa(numeroMesa);
                 String mesero = (meserosAsignados[i] != null) ? meserosAsignados[i] : "Sin asignar";
-                System.out.printf(".  Mesa %d (%-8s) -> Mesero: %-15s .\n", numeroMesa, area, mesero);
+                System.out.printf(".        Mesa %d (%-8s) -> Mesero: %-15s.\n", numeroMesa, area, mesero);
             }
         }
         
         /**/
-        System.out.println("...........................................");
-        System.out.println(".  0. Volver al menu principal            .");
-        System.out.println("...........................................");
-        System.out.print(".  Ingrese el numero de mesa reservada:   .");
+        System.out.println("...................................................");
+        System.out.println(".        0. Volver al menu principal              .");
+        System.out.println("...................................................");
+        System.out.print(".        Ingrese el numero de mesa reservada:     .");
         
         /**/
         if(scanner.hasNextInt()){
@@ -345,50 +370,53 @@ public class RestaurateMiCasita{
             scanner.nextLine(); // Limpiar el buffer de entrada
 
             if(mesaElegida == 0){
-                System.out.println(".  Regresando al menu principal...         .");
+                System.out.println(".        Regresando al menu principal...         .");
             }else if(mesaElegida >= 1 && mesaElegida <= 8){
                 int indice = mesaElegida - 1;
                 if(!mesasReservadas[indice]){
-                    System.out.println(".  La Mesa " + mesaElegida + " no esta reservada. Solo se pueden asignar meseros a mesas reservadas. .");
+                    System.out.println(".        La Mesa " + mesaElegida + " no esta reservada.             .");
+                    System.out.println(".        Solo se pueden asignar meseros a mesas reservadas. ");
                 }else{
-                    System.out.print(".  Ingrese el nombre del mesero asignado: ");
+                    System.out.print(".        Ingrese el nombre del mesero asignado: ");
                     String nombreMesero = scanner.nextLine().trim();
 
                     if(!nombreMesero.isEmpty()){
                         meserosAsignados[indice] = nombreMesero;
-                        System.out.println(".  Mesero '" + nombreMesero + "' asignado exitosamente a la Mesa " + mesaElegida + ". .");
+                        System.out.println(".        Mesero '" + nombreMesero + "' asignado exitosamente a la Mesa " + mesaElegida + ". .");
                     }else{
-                        System.out.println(".  El nombre del mesero no puede estar vacio. .");
+                        System.out.println(".        El nombre del mesero no puede estar vacio. .");
                     }
                 }
             }else{
-                System.out.println(".  Numero de mesa fuera de rango (0-8).   .");
+                System.out.println(".        Numero de mesa fuera de rango (0-8).   .");
             }
         }else{
-            System.out.println(".  Entrada invalida. Ingrese un numero.   .");
+            System.out.println(".        Entrada invalida. Ingrese un numero.   .");
             scanner.next();
         }
-        System.out.println("===========================================\n");
+        System.out.println("...................................................");
+        System.out.println();
     }
     
     /* proceso de facturacion */
     private static void imprimirFactura(Scanner scanner){
         System.out.println("");
-        System.out.println("===========================================");
-        System.out.println("====        FACTURA DE CONSUMO         ====");
-        System.out.println("===========================================");
+        System.out.println("========================================================");
+        System.out.println("====              FACTURA DE CONSUMO                ====");
+        System.out.println("========================================================");
         
         /**/
         if(productosSeleccionados.isEmpty()) {
-            System.out.println(".  No hay productos consumidos aun.       .");
-            System.out.println("===========================================\n");
+            System.out.println(".   No hay productos consumidos aun.                   .");
+            System.out.println("========================================================");
+            System.out.println();
             return;
         }
         
         /**/
-        System.out.println(".  0. Volver al menu principal            .");
-        System.out.println("...........................................");
-        System.out.print("Ingrese el numero de mesa para generar la factura (1-8) o 0 para regresar: ");
+        System.out.println("   Ingrese el numero de mesa para generar la factura.  .");
+        System.out.println(".  0. Volver al menu principal                         .");
+        System.out.println("........................................................");
         
         /**/
         if (scanner.hasNextInt()) {
@@ -410,21 +438,21 @@ public class RestaurateMiCasita{
                 
                 /**/
                 System.out.println("");
-                System.out.println("===========================================");
-                System.out.println("====       RESTAURANTE MI CASITA       ====");
-                System.out.println("===========================================");
-                System.out.printf(". Mesa N: %-2d (%-8s)                     .\n", mesaElegida, areaMesa);
-                System.out.printf(". Estado: %-12s                        .\n", estadoMesa);
-                System.out.printf(". Atendido por: %-25s .\n", nombreMesero);
-                System.out.println("...........................................");
-                System.out.println(". CONSUMO REALIZADO:                      .");
+                System.out.println("========================================================");
+                System.out.println("====              FACTURA DE CONSUMO                ====");
+                System.out.println("========================================================");
+                System.out.printf(". Mesa N: %-2d (%-8s)                                  \n", mesaElegida, areaMesa);
+                System.out.printf(". Estado: %-12s                                        \n", estadoMesa);
+                System.out.printf(". Atendido por: %-25s                                  \n", nombreMesero);
+                System.out.println("........................................................");
+                System.out.println(". CONSUMO REALIZADO:                                   .");
                 
                 /* sub total */
                 double subtotal = 0.0;
                 for (int i = 0; i < productosSeleccionados.size(); i++) {
                     String nombre = productosSeleccionados.get(i);
                     double precio = preciosSeleccionados.get(i);
-                    System.out.printf(". %-35s L%7.2f .\n", nombre, precio);
+                    System.out.printf(". %-35s L%7.2f  .\n", nombre, precio);
                     subtotal += precio;
                 }
 
@@ -434,12 +462,12 @@ public class RestaurateMiCasita{
                 double totalGeneral = subtotal + isv + propinaSugerida;
                 
                 /* subtotal impreso, ISV, propina y total */
-                System.out.println("...........................................");
-                System.out.printf(". SUBTOTAL:                          L%7.2f .\n", subtotal);
-                System.out.printf(". ISV (15%%):                         L%7.2f .\n", isv);
-                System.out.printf(". PROPINA SUGERIDA (10%%):            L%7.2f .\n", propinaSugerida);
-                System.out.println("...........................................");
-                System.out.printf(". TOTAL A PAGAR:                     L%7.2f .\n", totalGeneral);
+                System.out.println("........................................................");
+                System.out.printf(". SUBTOTAL:                           L%7.2f \n", subtotal);
+                System.out.printf(". ISV (15%%):                          L%7.2f \n", isv);
+                System.out.printf(". PROPINA SUGERIDA (10%%):             L%7.2f \n", propinaSugerida);
+                System.out.println("........................................................");
+                System.out.printf(". TOTAL A PAGAR:                      L%7.2f \n", totalGeneral);
             }else{
                 System.out.println(".  Numero de mesa fuera de rango (0-8).   .");
             }
@@ -447,6 +475,7 @@ public class RestaurateMiCasita{
             System.out.println(".  Entrada invalida. Ingrese un numero.   .");
             scanner.next();
         }
-        System.out.println("===========================================\n");
+        System.out.println("........................................................");
+        System.out.println();
     }
 }//fin restaurante
